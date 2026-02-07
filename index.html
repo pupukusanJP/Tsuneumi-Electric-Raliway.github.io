@@ -123,5 +123,21 @@
         </section>
     </section>
     </div>
+    <script>
+async function updateUnkouInfo() {
+  const res = await fetch("https://morning-waterfall-0b65.pupuku193.workers.dev/train");
+  const data = await res.json();
+
+  for (const id in data) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = data[id];
+  }
+}
+
+setInterval(updateUnkouInfo, 3000);
+updateUnkouInfo();
+</script>
+
 </body>
 </html>
+
