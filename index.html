@@ -124,28 +124,27 @@
     </section>
     </div>
 <script>
-async function updateUnkouInfo() {
+async function updateStatus() {
   const res = await fetch("https://morning-waterfall-0b65.pupuku193.workers.dev/train", {
     cache: "no-store"
   });
-
   const data = await res.json();
 
-  for (const stationId in data) {
-    const el = document.getElementById(stationId);
-    if (!el) continue;
-
-    const info = data[stationId];
-    el.textContent = `${info.type} ${info.destination}行 ${info.status}`;
+  if (data.Tsuneumi) {
+    document.getElementById("Tsunuemi").textContent =
+      data.Tsuneumi.type + " " +
+      data.Tsuneumi.destination + " " +
+      data.Tsuneumi.status;
   }
 }
 
-setInterval(updateUnkouInfo, 3000);
-updateUnkouInfo();
+setInterval(updateStatus, 2000);
 </script>
+
 
 
 </body>
 </html>
+
 
 
